@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { registerDriver } from '../../store/actions/auth';
 import { connect } from 'react-redux'
 import { addError, removeError } from '../../store/actions/error'
+import { withRouter } from 'react-router-dom'
 
 import './Form.css';
 class DriverRegisForm extends Component {
@@ -39,7 +40,7 @@ class DriverRegisForm extends Component {
       license_plate: this.state.licensePlate,
       phone_number: this.state.phoneNumber,
       license_number: this.state.licenseNumber,
-      ktpNumber: this.state.ktpNumber,
+      ktp_number: this.state.ktpNumber,
       address: this.state.address
     })
       .then(res => {
@@ -120,4 +121,4 @@ function mapStateToProps(reduxState) {
   }
 }
 
-export default connect(mapStateToProps, { registerDriver, addError, removeError })(DriverRegisForm);
+export default withRouter(connect(mapStateToProps, { registerDriver, addError, removeError })(DriverRegisForm));
